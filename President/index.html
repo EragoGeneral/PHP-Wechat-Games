@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>美工总统举牌</title>
+<link type="text/css" rel="stylesheet" href="css/frozen.css" />
+<style>
+.ui-header-positive, .ui-footer-positive {
+	background-color: #f05557;
+	color: #fff;
+}
+
+a {
+	color: #f05557;
+}
+</style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body ontouchstart="">
+	<header class="ui-header ui-header-positive ui-border-b">
+		<h1>美国总统举牌</h1>
+	</header>
+	<div class="wrapper">
+		<br> <img src="img/president.jpg" width="50%" id="mypicture"
+			style="margin: 30px 25%;" />
+			<span style="width: 1299.46px; height: 1537.69px; position: absolute; z-index: 2; top: 2%; left: 2%;" class="scan"></span>
+		<div class="ui-form">
+			<form action="" method="post">
+				<div class="ui-form-item ui-border-b">
+					<label for="#">内容</label> <input type="text" id="name" name="name"
+						maxlength="30" placeholder="一行输入内容注意字数" />
+				</div>
+				<div class="ui-form-item ui-border-b">
+					<label for="#"></label> <input type="text" name="name2"
+						maxlength="30" placeholder="二行输入内容注意字数" />
+				</div>
+
+				<div class="ui-btn-wrap">
+					<button id="ok_btn" class="ui-btn-lg ui-btn-danger" onclick="createImage();">确定</button>
+				</div>
+			</form>
+		</div>
+	</div>	
+</body>
+</html>
