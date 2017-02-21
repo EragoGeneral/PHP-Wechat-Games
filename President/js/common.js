@@ -1,5 +1,6 @@
 var waitHandler = null;
-function makePicture() {
+
+function createImage() {
 	var name = $('#name').val();
 	if(name == '') {
 		alert('请输入姓名');return;
@@ -11,28 +12,27 @@ function makePicture() {
 	$('.float').css('display', 'block');
 	$('.scan').css('display', 'block');
 
-	$('#mypicture').attr('src', '');
-	$('#mypicture').css('display', 'none');
+	//$('#emptyPicture').attr('src', '');
+	//$('#emptyPicture').css('display', 'none');
 	$('#ok_btn').css('display', 'none');
+	$('.ui-form').css('display', 'none');
 	
 	$.ajax({
 		type:'POST',
-		url:'create_img.php',
+		url:'president.php',
 		data:'name='+ name +'&message='+ message,
 		timeout:6000,
 		success:function(response){		
 			if(response != '-1') {
-				var img = new Image();  
-				img.src = response;
-				img.onload = function(){
-					$('#mypicture').attr('src', response);
-				};
+				$('#mypicture').attr('src',response); 
+				//$('#mypicture').css('display', 'block'); 
+				$('#emptyPicture').css('display', 'none');
 			}
 		},
 		error:function(){}
 	})
 
-	waitHandler = setInterval("waitLoading()", 1200)
+	waitHandler = setInterval("waitLoading()", 1200);
 }
 
 var waitText = ['总统正在为你签名...'];
