@@ -11,12 +11,10 @@ function createImage() {
 	$('.transparent-float').css('display', 'block');
 	$('.float').css('display', 'block');
 	$('.scan').css('display', 'block');
-
-	//$('#emptyPicture').attr('src', '');
-	//$('#emptyPicture').css('display', 'none');
+	
 	$('#ok_btn').css('display', 'none');
 	$('.ui-form').css('display', 'none');
-	
+	$('#emptyPicture').css('display', 'none');
 	$.ajax({
 		type:'POST',
 		url:'president.php',
@@ -25,8 +23,6 @@ function createImage() {
 		success:function(response){		
 			if(response != '-1') {
 				$('#mypicture').attr('src',response); 
-				//$('#mypicture').css('display', 'block'); 
-				$('#emptyPicture').css('display', 'none');
 			}
 		},
 		error:function(){}
@@ -51,7 +47,6 @@ function waitLoading() {
 		}
 		else {
 			$('#mypicture').css('display', 'block');
-			
 			$('.scan').html('');
 			$('.scan').css('display', 'none');
 
