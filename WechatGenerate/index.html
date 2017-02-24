@@ -23,18 +23,20 @@ a {
 		<h1>聊天生成器</h1>
 	</header>
 	<div class="wrapper">
+		<span style="width: 100%; height: 100%; position: absolute; padding: 50px;" class="scan"></span>
 		<br> 
-		<img src="img/my.jpg" width="50%" style="margin: 30px 25%;" />
+		<img id="emptyPicture" src="img/my.jpg" width="100%" style="margin:20px 0%;" />
+		<img src="" width="80%" id="mypicture" style="margin: 30px 10% 10px; display:none;" />
 		<div class="ui-form">
 			<div class="ui-form-item ui-border-b">
-				<label for="#">名字</label> <input type="text" name="name"
+				<label for="#">名字</label> <input type="text" id="name" name="name"
 					maxlength="5" placeholder="输入你的名字" />
 			</div>
 
 			<div class="ui-form-item ui-border-b">
 				<label>明星</label>
 				<div class="ui-select">
-					<select name=mingxing>
+					<select id="mingxing" name="mingxing">
 						<option value="wyf">吴亦凡</option>
 						<option value="my">马云</option>
 						<option value="fbb">范冰冰</option>
@@ -46,6 +48,9 @@ a {
 				<button class="ui-btn-lg ui-btn-danger" onclick="createImage();">确定</button>
 			</div>
 		</div>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>	
 </body>
 </html>
 </body>

@@ -6,6 +6,8 @@ function createImage() {
 		alert('请输入姓名');return;
 	}
 	
+	var mingxing = $("#mingxing").val();
+	
 	$('.transparent-float').css('display', 'block');
 	$('.float').css('display', 'block');
 	$('.scan').css('display', 'block');
@@ -15,8 +17,8 @@ function createImage() {
 	$('#emptyPicture').css('display', 'none');
 	$.ajax({
 		type:'POST',
-		url:'create_img.php',
-		data:'name='+ name,
+		url:'wechat_generate.php',
+		data:'name='+ name+"&mingxing="+mingxing,
 		timeout:6000,
 		success:function(response){		
 			if(response != '-1') {
