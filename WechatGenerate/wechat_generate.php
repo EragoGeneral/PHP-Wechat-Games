@@ -43,10 +43,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //写TTF文字到图中
     imagettftext($im, 108, 0, 140, 220, $textcolor, $fnt1, $curTime);
     imagettftext($im, 24, 0, 240, 290, $textcolor, $fnt1, $curDate);
-    imagettftext($im, 36, 0, 300, 850, $textcolor, $fnt1, $name);
+    imagettftext($im, 20, 0, 290, 840, $textcolor, $fnt1, $name);
     
     $logo = imagecreatefrompng("img/qcode.png");
-    imagecopy($im,$logo,35,980,0,0,60,60);
+    imagecopy($im,$logo,530,970,0,0,65,65);
     
     //建立 jpeg 图形
     imagepng($im, $basePath.$savefile);
