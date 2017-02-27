@@ -1,3 +1,10 @@
+$(document).ready(function(){
+	$('#mingxing').on('change',function(){
+		var mingxing = $("#mingxing").val();
+		$('#emptyPicture').attr('src', 'img/'+mingxing+".jpg");
+	});
+});
+
 var waitHandler = null;
 
 function createImage() {
