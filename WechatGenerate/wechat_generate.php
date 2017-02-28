@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     
     $logo = imagecreatefrompng("img/qcode.png");
-    imagecopy($im,$logo,520,950,0,0,100,100);
+    imagecopy($im,$logo,520,900,0,0,100,100);
     
     //建立 jpeg 图形
     imagepng($im, $basePath.$savefile);
