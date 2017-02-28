@@ -6,7 +6,7 @@ function createImage() {
 		alert('请输入姓名');return;
 	}
 	
-	var message = $('#message').val();
+	var option = $('#option').val();
 	
 	$('.transparent-float').css('display', 'block');
 	$('.float').css('display', 'block');
@@ -17,8 +17,8 @@ function createImage() {
 	$('#emptyPicture').css('display', 'none');
 	$.ajax({
 		type:'POST',
-		url:'president.php',
-		data:'name='+ name +'&message='+ message,
+		url:'ring.php',
+		data:'name='+ name +'&option='+ option,
 		timeout:6000,
 		success:function(response){		
 			if(response != '-1') {
