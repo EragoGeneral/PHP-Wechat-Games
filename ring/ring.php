@@ -1,22 +1,25 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //header( "Content-Type:text/html; charset=UTF-8 ");
-    //�������ͼ������
+    //定义输出图像类型
     header("content-type:image/jpeg");
     
     $basePath = dirname(__FILE__).'/';
     
     $name = $_POST['name'];
-    $message = '1234';//$_POST['option'];
+    $index = $_POST['option'];
     
+    $textOptions = array("陪伴是最长情的告白，我想陪你一辈子。", "我希望以后可以不用送你回家，而是和你一起回家。",
+    "只要和你在一起就是我今生最大的幸福。","乘风破浪，幸福的航行。亲爱的，嫁给我吧！","我想有个家，一个有你的家，嫁给我吧!");
+    $message = $textOptions[$index-1];
     
-    //������Ƭ
+    //载入照片
     $im = imagecreatefromjpeg("img/icon.jpg");
-    //�����ֶ���ɫΪ��ɫ
+    //设置字段颜色为蓝色
     $textcolor = imagecolorallocate($im, 8, 9, 9);
-    //�������� 
+    //定义字体 
     $fnt = "font/QNHGJHC.TTF";
-    //����������崮
+    //定义输出字体串
     $text = $name; //iconv("GBK", "UTF-8", $name);
     $text1 = $message; //iconv("GBK", "UTF-8", $message);
     //echo $text;
@@ -33,16 +36,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         exit();
     }
     
-    //дTTF���ֵ�ͼ��
+    //写TTF文字到图中
     imagettftext($im, 12, -5, 30, 30, $textcolor, $fnt, $text);
-    imagettftext($im, 12, -5, 130, 130, $textcolor, $fnt, $text1);
+    imagettftext($im, 18, -5, 40, 100, $textcolor, $fnt, $text1);
     
     $logo = imagecreatefrompng("img/qcode.png");
     imagecopy($im,$logo,235,250,0,0,60,60);
     
-    //���� jpeg ͼ��
+    //建立 jpeg 图形
     imagejpeg($im, $basePath.$savefile);
-    //�ͷ���Դ
+    //释放资源
     imagedestroy($im);
     
     echo $savefile;
