@@ -1,6 +1,5 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //header( "Content-Type:text/html; charset=UTF-8 ");
+if($_SERVER['REQUEST_METHOD'] == 'POST'){    
     //定义输出图像类型
     header("content-type:image/jpeg");
     
@@ -10,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $index = $_POST['option'];
     
     $textOptions = array("陪伴是最长情的告白，我想陪你一辈子。", "我希望以后可以不用送你回家，而是和你一起回家。",
-    "只要和你在一起就是我今生最大的幸福。","乘风破浪，幸福的航行。亲爱的，嫁给我吧！","我想有个家，一个有你的家，嫁给我吧!");
+    "只要和你在一起就是我今生最大的幸福。","乘风破浪, 幸福的航行。亲爱的，嫁给我吧！","我想有个家，一个有你的家，嫁给我吧!");
     $message = $textOptions[$index-1];
     
     //载入照片
@@ -18,11 +17,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     //设置字段颜色为蓝色
     $textcolor = imagecolorallocate($im, 8, 9, 9);
     //定义字体 
-    $fnt = "font/QNHGJHC.TTF";
+    $fnt = "font/MNJYBHS.TTF";
     //定义输出字体串
     $text = $name; //iconv("GBK", "UTF-8", $name);
     $text1 = $message; //iconv("GBK", "UTF-8", $message);
-    //echo $text;
     
     $savepath = 'img/'.date('Ym');
     $savename = md5($name.$message).'.jpg';
@@ -37,11 +35,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     
     //写TTF文字到图中
-    imagettftext($im, 12, -5, 30, 30, $textcolor, $fnt, $text);
-    imagettftext($im, 18, -5, 40, 100, $textcolor, $fnt, $text1);
+    $row1 = substr($text1, 0, 30);
+    $row2 = substr($text1, 30, strlen($text1));
+    imagettftext($im, 10, 0, 40, 55, $textcolor, $fnt, $text);
+    imagettftext($im, 10, 0, 40, 80, $textcolor, $fnt, $row1);
+    imagettftext($im, 10, 0, 40, 100, $textcolor, $fnt, $row2);
     
     $logo = imagecreatefrompng("img/qcode.png");
-    imagecopy($im,$logo,235,250,0,0,60,60);
+    imagecopy($im,$logo,265,205,0,0,45,45);
     
     //建立 jpeg 图形
     imagejpeg($im, $basePath.$savefile);
