@@ -1,0 +1,29 @@
+body, button, input, select, textarea {font-size: 14px;font-family: Microsoft YaHei,arial,\5b8b\4f53; }
+
+.item {
+	width: 45%;
+	margin: 2%;
+	float: left;
+	background-color: #ffffff;
+    box-shadow: 0 1px 3px #ccc;
+}
+
+.item img{
+	width: 100%;
+}
+
+.number{
+	display: block;
+    width: 160px;
+    height: 125px;
+    padding-left: 5px;
+    background: url(images/numBg.png) no-repeat left top;
+    background-size: 100% auto;
+    position: absolute;
+    color: #fff;
+    text-align: left;
+    line-height: 70px;
+    top: -6px;
+    left: 0;
+    font-size: 30px;
+}

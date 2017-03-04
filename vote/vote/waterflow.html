@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>瀑布流布局</title>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.masonry.min.js"></script>
+<style type="text/css">
+body, button, input, select, textarea {
+	font-size: 14px;
+	font-family: Microsoft YaHei, arial, \5b8b\4f53;
+}
+
+.item {
+	width: 45%;
+	margin: 2%;
+	float: left;
+	background-color: #ffffff;
+	box-shadow: 0 1px 3px #ccc;
+}
+
+.item img {
+	width: 100%;
+}
+
+.number {
+	display: block;
+	width: 160px;
+	height: 125px;
+	padding-left: 5px;
+	background: url(images/numBg.png) no-repeat left top;
+	background-size: 100% auto;
+	position: absolute;
+	color: #fff;
+	text-align: left;
+	line-height: 70px;
+	top: -6px;
+	left: 0;
+	font-size: 30px;
+}
+</style>
+</head>
+<body>
+	<div id="container" style="width: 100%">
+		<div class="item">
+			<i class="number">1号</i> <a href="" style="display: block;"> <img
+				src="images/drawing/1.jpg" />
+			</a>
+		</div>
+		<div class="item">
+			<i class="number">2号</i> <img src="images/drawing/2.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">3号</i> <img src="images/drawing/3.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">4号</i> <img src="images/drawing/4.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">5号</i> <img src="images/drawing/5.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">6号</i> <img src="images/drawing/6.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">7号</i> <img src="images/drawing/7.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">8号</i> <img src="images/drawing/8.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">9号</i>
+			<img src="images/drawing/9.jpg" />
+		</div>
+		<div class="item">
+			<i class="number">10号</i>
+			<img src="images/drawing/10.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/11.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/12.jpg" />
+		</div>
+		<!-- 
+		<div class="item">
+			<img src="images/drawing/13.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/14.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/15.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/16.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/17.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/18.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/19.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/20.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/21.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/22.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/23.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/24.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/25.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/26.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/27.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/28.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/29.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/30.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/31.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/32.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/33.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/34.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/35.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/36.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/37.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/38.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/39.jpg" />
+		</div>
+		<div class="item">
+			<img src="images/drawing/40.jpg" />
+		</div> -->
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$('#container').masonry({
+				// options  
+				itemSelector : '.item',
+				columnWidth : 240
+			});
+		});
+
+		$(window).scroll(function() {
+			// 当滚动到最底部以上100像素时， 加载新内容
+			if ($(document).height() - $(this).scrollTop()
+					- $(this).height() < 100) {
+				ajax_load_data();
+			}
+		});
+
+		function ajax_load_data() {
+			console.log('loading data...');
+			/* 
+			var href = $('#page-nav').find('.nextprev').attr('href');
+			if (href && href != pre_href) {
+				console.log('href = ' + href);
+				pre_href = href;
+
+				$.ajax({
+					url : href,//获取元素列表的地址
+					data : {
+						'act' : 'ajax_wap_index'
+					},
+					dataType : 'json',
+					type : 'post',
+					beforeSend : function() {
+						show_loading_body();
+					},
+					complete : function() {
+						show_loading_body();
+					},
+					success : function(data) {
+						if (data.status != undefined && data.status == 'ok') {
+							if (data.html) {
+								var $boxes = $(data.html);
+								$container.append($boxes).masonry("appended",
+										$boxes, true);//追加元素
+								$container.imagesLoaded(function() {
+									$container.masonry();
+								});//加载完图片后，会实现自动重新排列。【这里是重点】
+							}
+
+							if (data.str_pages) {
+								$('#page-nav').html(data.str_pages);//设置下一个分页的地址。【可以自己补充】
+							}
+						}
+					}
+				});
+			} */
+		}
+	</script>
+</body>
+</html>
