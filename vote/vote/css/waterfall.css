@@ -1,6 +1,6 @@
 @charset "utf-8";
 *{ margin:0; padding:0;}
-body { font:12px/1.5 Arial; color:#666; background:#EDEDED;}
+body { font:12px/1.5 Arial; background:#EDEDED;}
 ul,li{ list-style:none;}
 a{ color:#666; text-decoration:none;}
 a:hover{ text-decoration:none; color:#000;}
@@ -237,3 +237,109 @@ input, textarea, select {
     height: 20px;
     text-align: center;
 }
+
+.content {
+    background: #f9f9f9;
+    padding: 15px 5px;
+}
+
+.content .text_a {
+    width: 100%;
+    text-align: center;
+}
+
+#content_tab {
+    background-color: #fff;
+    width: 98%;
+    height: auto;
+    float: left;
+    box-shadow: 0 1px 2px #ccc;
+    padding: 15px 1%;
+    margin-bottom: 1%;
+    overflow: hidden;
+}
+
+.newTit {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.newTit .rightInfo {
+    float: right;
+}
+
+.rightInfo span {
+    margin-right: 10px;
+}
+
+.rightInfo span i {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: bottom;
+}
+
+.rightInfo span:nth-child(1) i {
+    background: url(../images/hand.png) no-repeat;
+    background-size: 20px;
+}
+
+.rightInfo span:nth-child(2) i {
+    background: url(../images/ranking.png) no-repeat;
+    background-size: 20px;
+}
+
+.newTit .leftName {
+    float: left;
+    margin-left: 6px;
+}
+
+.newTit .leftName h2 {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.newTit .leftName h2 em {
+    color: #fd4699;
+    margin-right: 10px;
+}
+
+em, i {
+    font-style: normal;
+}
+
+.blank10 {
+    clear: both;
+    height: 10px;
+    overflow: hidden;
+}
+
+#content_pic {
+    width: 100%;
+    height: auto;
+}
+
+#content_pic img {
+    max-width: 100%;
+    height: auto;
+}
+
+.abtn_box {
+    width: 100%;
+}
+
+.abtn_box .a_btn {
+    display: inline-block;
+    width: 100%;
+    background-color: #fd4699;
+    line-height: 37px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+
