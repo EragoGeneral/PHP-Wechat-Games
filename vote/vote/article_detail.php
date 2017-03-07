@@ -17,7 +17,10 @@
 <?php
     include 'header.php';
 ?>
-
+<?php
+    include 'tabs.php';
+?>
+<div class="blank20"></div>
 <section class="content">
   <!-- 
   <div class="text_a clearfix" id="sort"> 

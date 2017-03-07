@@ -248,6 +248,19 @@ input, textarea, select {
     text-align: center;
 }
 
+.content .text_a a {
+    display: inline-block;
+    width: 31.5%;
+    /* float: left; */
+    text-align: center;
+    color: #fff;
+    line-height: 27px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #fd4699;
+    color: #fd4699;
+}
+
 #content_tab {
     background-color: #fff;
     width: 98%;
@@ -341,5 +354,67 @@ em, i {
     margin-top: 10px;
 }
 
+.content .text_a a.active {
+    background-color: #fd4699;
+    color: #fff;
+}
 
+.rank300 li.rank-head {
+    padding: 6px 0;
+}
+
+.rank300 li {
+    border-bottom: 1px solid #eee;
+    padding: 4px 0;
+}
+
+.rank300 li.rank-head span {
+    color: #080806;
+    font-weight: 800;
+}
+
+.rank300 li span {
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination .current {
+    border: 1px solid #fd4699;
+    color: #fd4699;
+}
+
+.pagination a, .current {
+    display: inline-block;
+    padding: 0 8px;
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid #9a9a9a;
+    margin-right: 10px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 0 6px;
+    color: #9a9a9a;
+}
+
+.pagination a, .current {
+    display: inline-block;
+    padding: 0 8px;
+    display: inline-block;
+    text-align: center;
+    line-height: 28px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid #9a9a9a;
+    margin-right: 10px;
+}
 
