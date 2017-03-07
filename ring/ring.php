@@ -1,7 +1,7 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST'){    
     //定义输出图像类型
-    header("content-type:image/png");
+    header("content-type:image/jpeg");
     
     $basePath = dirname(__FILE__).'/';
     
@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $message = $textOptions[$index-1];
     
     //载入照片
-    $im = imagecreatefrompng("img/ring.png");
+    $im = imagecreatefromjpeg("img/ring.jpg");
     //设置字段颜色为蓝色
     $textcolor = imagecolorallocate($im, 8, 9, 9);
     //定义字体 
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $text1 = $message; //iconv("GBK", "UTF-8", $message);
     
     $savepath = 'img/'.date('Ym');
-    $savename = md5($name.$message).'.png';
+    $savename = md5($name.$message).'.jpg';
     $savefile = $savepath .'/'. $savename;
     
     if(!is_dir($basePath.$savepath)){
@@ -45,7 +45,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     imagecopy($im,$logo,255,195,0,0,60,60);
     
     //建立 jpeg 图形
-    imagepng($im, $basePath.$savefile);
+    imagejpeg($im, $basePath.$savefile);
     //释放资源
     imagedestroy($im);
     
