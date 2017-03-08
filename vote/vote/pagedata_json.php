@@ -13,10 +13,11 @@ $loadIndex = $_POST['load_index'];
 // );
 
 $json_array = [];
+$loadIndex = ($loadIndex-1)*10+1;
 for($i=$loadIndex; $i<$loadIndex+10;$i++){
     $article = new Article();
     $article->setIndex($i);
-    $article->setPath("http://localhost:8082/Projects/vote/vote/images/drawing/$i.jpg");
+    $article->setPath("http://localhost:8082/PHP-Wechat-Games/vote/vote/images/drawing/$i.jpg");
     //echo $article->getPath();
     $json_arr = array(
         "index" => $article->getIndex(),

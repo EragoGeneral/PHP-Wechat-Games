@@ -17,7 +17,7 @@ $(document).ready(function(){
 				    	html += '<div class="cell"><i class="number">'+k+'号</i><a href="#"><img src="'+src+'" /></a><p><a>'
 						+ k + '</a></p></div>';
 				    }
-				    $('#load_index').val(parseInt(loadIndex)+10);
+				    $('#load_index').val(parseInt(loadIndex)+1);
 			    }
 			}); 
 			return $(html);
@@ -26,6 +26,4 @@ $(document).ready(function(){
 		insert_type : 1
 	}
 	$('#waterfall').waterfall(opt);
-	
-	$(window).trigger('scroll');
 });

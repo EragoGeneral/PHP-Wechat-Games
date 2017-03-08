@@ -221,6 +221,70 @@ body {
     ?>
 	<div class="blank20"></div>
 	<div id="waterfall">
+	   <div class="cell">
+			<i class="number">9号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/9.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">10号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/10.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">11号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/11.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">12号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/12.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">9号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/9.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">10号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/10.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">11号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/11.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
+		<div class="cell">
+			<i class="number">12号</i>
+			<a href="http://www.5icool.org/special/pinterest/"><img
+				src="images/drawing/12.jpg" /></a>
+			<p>
+				<a href="http://www.5icool.org/special/pinterest/">jQuery瀑布流特效</a>
+			</p>
+		</div>
 	</div>
 	<div>
 		<ul style="width:100%; margin:0 auto;" class="bot_main" id="c_foot">
@@ -295,7 +359,7 @@ body {
 	<div style=" height:60px; width:100%; display:block;"></div>
     <?php
         include 'footer.php';
-    ?>   
-    <script type="text/javascript" src="js/common.js"></script>
+    ?>   <!-- 
+    <script type="text/javascript" src="js/common.js"></script> -->
 </body>
 </html>
