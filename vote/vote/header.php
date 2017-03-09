@@ -9,7 +9,7 @@
 		</div>
 		<ul id="position">
 		</ul>
-		<script src="http://s.404.cn/tpl/static/voteimg/js/swipe.js"></script> 
+		<script src="js/swipe.js"></script> 
 		<script type="text/javascript"> 
 		  var bullets = document.getElementById('position').getElementsByTagName('li');
 		  var banner = Swipe(document.getElementById('mySwipe'), {
