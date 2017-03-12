@@ -98,8 +98,8 @@ var waterFall = {
 		    data:{"load_index":that.loadIndex},
 		    async:false,
 		    success:function(data){
+		    	console.log(data);
 		    	var flag = data.flag;
-				console.log(flag);
 				if(flag == '0'){
 					that.loadFinish = true;
 					alert(data.msg);
@@ -109,7 +109,7 @@ var waterFall = {
 			    for(var idx = 0; idx < rets.length; idx++){
 			    	var index = rets[idx].index;
 			    	var imgUrl = rets[idx].path;
-
+					var link = rets[idx].detail;
 			    	var column;
 			    	var column0 = document.getElementById("waterFallColumn_0");
 			    	var column1 = document.getElementById("waterFallColumn_1");
@@ -125,7 +125,7 @@ var waterFall = {
 					iEle.innerHTML = index+"号";
 					column.appendChild(iEle);
 					var aEle = document.createElement("a");
-					aEle.href = "###";
+					aEle.href = link;
 					aEle.className = "pic_a";
 					aEle.innerHTML = '<img src="'+ imgUrl +'" /><strong>'+ index +'</strong>';
 					column.appendChild(aEle);
@@ -180,12 +180,11 @@ var waterFall = {
 		    data:{"load_index":that.loadIndex},
 		    async:false,
 		    success:function(data){		
+		    	console.log(data);
 				var flag = data.flag;
-				console.log(flag);
-			    
 		    	var rets = data.list;	    
 		    	 for(var idx = 0; idx < rets.length; idx++){
-			    	var obj = {"index":rets[idx].index, "imgUrl":rets[idx].path};
+			    	var obj = {"index":rets[idx].index, "imgUrl":rets[idx].path, "link":rets[idx].detail};
 			    	result.push(obj);
 		    	 }  
 		    	 that.loadIndex++; 	
@@ -202,7 +201,7 @@ var waterFall = {
 // 						var index = self.getIndex();
 // 						html = html + '<i class="number">'+index+'号</i><a href="###" class="pic_a"><img src="'+ self.rootImage + "P_" + index +'.jpg" /><strong>'+ index +'</strong></a>';
 						var obj = result[start + self.columnNumber * i];
-						html = html + '<i class="number">'+obj.index+'号</i><a href="###" class="pic_a"><img src="'+ obj.imgUrl +'" /><strong>'+ obj.index +'</strong></a>';
+						html = html + '<i class="number">'+obj.index+'号</i><a href="'+ obj.link +'" class="pic_a"><img src="'+ obj.imgUrl +'" /><strong>'+ obj.index +'</strong></a>';
 					}
 					return html;	
 				}() +

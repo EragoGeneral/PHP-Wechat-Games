@@ -55,7 +55,8 @@ if($loadIndex>$loadtimes){
             $json_arr = array(
                 "index" => $article->getIndex(),
                 "path" => $article->getPath(),
-                "name" => $article->getName()
+                "name" => $article->getName(),
+                "detail" => "http://vote.wxsxz117.cc/vote/article_detail.php?id=".$row['id']
             );
             array_push($json_array, $json_arr);
         }
