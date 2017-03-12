@@ -354,7 +354,8 @@ body {
 			auto_imgHeight : true,
 			insert_type : 1
 		}
-		$('#waterfall').waterfall(opt);		
+		$('#waterfall').waterfall(opt);	
+		console.log($('#waterfall'));	
 	</script>
 	<div style=" height:60px; width:100%; display:block;"></div>
     <?php

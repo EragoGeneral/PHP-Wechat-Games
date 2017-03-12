@@ -2,6 +2,7 @@
 class Article{
     private $index;
     private $path;
+    private $name;
     
     public function getIndex()
     {
@@ -21,6 +22,16 @@ class Article{
     public function setPath($path)
     {
         $this->path = $path;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
     }
 }
 
