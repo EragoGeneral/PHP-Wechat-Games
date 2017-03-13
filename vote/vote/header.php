@@ -29,7 +29,7 @@
 		  </script>
 	</div>
 	<div class="bigBtn"> 
-		<a href="javascript:;" onclick="apply();">我要报名</a> 
+		<a href="upload_article.html" onclick="">我要报名</a> 
 	</div>    
 
 	<div class="search">
