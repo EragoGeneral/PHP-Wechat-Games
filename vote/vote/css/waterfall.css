@@ -405,16 +405,3 @@ em, i {
     padding: 0 6px;
     color: #9a9a9a;
 }
-
-.pagination a, .current {
-    display: inline-block;
-    padding: 0 8px;
-    display: inline-block;
-    text-align: center;
-    line-height: 28px;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: 1px solid #9a9a9a;
-    margin-right: 10px;
-}
-

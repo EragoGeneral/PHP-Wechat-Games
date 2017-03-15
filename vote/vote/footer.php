@@ -7,7 +7,7 @@
 			<span class="txt">搜索</span>
 		</li>	
 		<li class="ico_3" id="foot_bu" style="width: 33%;">
-			<a href="javascript:;" onclick="window.location.href = &quot;/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&quot;;">
+			<a href="javascript:;" onclick="window.location.href = &quot;article_ranking.php&quot;">
 			<span class="ico">
 				<img src="images/daohang_03.png" width="20" height="20"></span>
 				<span class="txt">排行</span>
@@ -17,7 +17,7 @@
 			<span class="ico">
 				<img src="images/daohang_04.png" width="20" height="20">
 			</span>
-			<span class="txt">拉票</span>
+			<span class="txt">我的</span>
 		</li>  
 	</ul>
 </div>

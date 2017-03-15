@@ -20,7 +20,32 @@ body {
     include 'tabs.php';
     include 'dbconn.php';
     
+    include 'commonutil.class.php';
     
+    //$curPage = $_GET['curPage'];
+    //$count = $_GET['count'];
+    if(isset($_GET['curPage'])){       //由GET方法获得当前页数
+        $curPage = $_GET['curPage'];
+    }else{
+        $curPage = 1;
+    }
+    
+    if(isset($_GET['per'])){       //由GET方法获得每页记录数
+        $per = $_GET['per'];
+    }else{
+        $per = 5;
+    }
+    
+    mysqli_query($conn, "set names 'utf8'");
+    mysqli_select_db($conn, "drawing_vote");
+    
+    $sql = "select id from article where is_deleted = '0' and is_passed = '1' order by vote_num desc";
+    $result = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($result);
+    
+    $start = ($curPage-1)*$per;
+    $pageSql = "SELECT id, code, name, vote_num from article WHERE is_deleted = '0' and is_passed = '1' order by vote_num desc limit $start, $per";
+    $pageResult = mysqli_query($conn, $pageSql);
 ?>
 <div class="blank20"></div>
 
@@ -31,6 +56,22 @@ body {
 		  <span style="display: inline-block; width: 40%">选项标题</span>
 		  <span style="width: 18%; color: #f67685">票数</span>
 		</li>
+		<?php 
+                if(mysqli_num_rows($pageResult)){
+                    $num = ($curPage-1)*$per+1;
+                    while ($row = mysqli_fetch_array($pageResult)){
+            ?>
+                        <li class="list">
+                		  <span><?php echo $num ?></span><span><?php echo $row['code']?></span>
+                		  <span style="display: inline-block; width: 40%"><?php echo $row['name']?></span>
+                		  <span style="width: 18%; color: #f67685"><?php echo $row['vote_num']?></span>
+                		</li>  
+            <?php 
+                    $num++;
+                    }
+                }
+            ?>
+		<!--  
 		<li class="list">
 		  <span>1</span><span>150</span>
 		  <span style="display: inline-block; width: 40%">梦幻美少女</span>
@@ -45,8 +86,15 @@ body {
 		  <span style="display: inline-block; width: 40%">冬、夏</span>
 		  <span style="width: 18%; color: #f67685">5365</span>
 		</li>
+		 -->
 	</ul>
 </div>
+
+<?php 
+echo CommonUtil::getValue('article_ranking.php', $count, $curPage, $per);
+mysqli_close($conn);
+?>
+<!-- 
 <div class="pagination pagination-centered" style="margin-top: 20px;">
 	<span class="current">1</span><a
 		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=2">2</a><a
@@ -56,6 +104,7 @@ body {
 	<a
 		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=2">&gt;&gt;</a>
 </div>
+-->
 <div style="height: 60px; width: 100%; display: block;"></div>
 <?php
 include 'footer.php';
