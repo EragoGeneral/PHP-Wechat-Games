@@ -33,7 +33,7 @@ body {
     if(isset($_GET['per'])){       //由GET方法获得每页记录数
         $per = $_GET['per'];
     }else{
-        $per = 5;
+        $per = 10;
     }
     
     mysqli_query($conn, "set names 'utf8'");

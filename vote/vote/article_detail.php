@@ -28,10 +28,13 @@ body {
             
             mysqli_select_db($conn, "drawing_vote");
             
-            $sql = "select id, code, name, path, author, vote_num, declaration from article where id = $article_id";
+            //$sql = "select id, code, name, path, author, vote_num, declaration from article where id = $article_id";
+            
+            $sql = "SELECT t2.rownum, t2.id, t2.code, t2.name, t2.path, t2.author, t2.declaration, IFNULL(t2.vote_num,0) as vote_num , IFNULL((t11.vote_num-t2.vote_num),0) as diff FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, path, author, vote_num, declaration FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' AND is_passed = '1' ORDER BY vote_num DESC) t)t2 LEFT JOIN (SELECT t1.rownum, t1.vote_num FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, vote_num FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' AND is_passed = '1' ORDER BY vote_num DESC) t) t1)t11 ON t2.rownum - 1= t11.rownum WHERE id = $article_id";
+            
             $result = mysqli_query($conn, $sql);
             $article = mysqli_fetch_array($result);
-            // echo "article id:".$article['id'].", name:".$article['name'].", path:".$article['path'];        	    
+            //echo "article id:".$article['id'].", name:".$article['name'].", path:".$article['path'].", diff:".$article['diff'];        	    
         ?>
         <div class="blank20"></div>
 	<section class="content"> <!-- 
@@ -44,15 +47,15 @@ body {
 		<div class="newTit">
 			<div class="rightInfo">
 				<span><i></i><span id="vote_count"><?php echo $article['vote_num'] ?></span></span>
-				<span><i></i>12</span>
+				<span><i></i><?php echo $article['rownum'] ?></span>
 			</div>
 			<div class="leftName">
 				<h2>
 					<em>14号</em><?php echo $article['name'] ?></h2>
 			</div>
 		</div>
-		<div class="blank10"></div>
-		<p>与上一名差距：118票</p>
+		<div class="blank10"></div>   
+		<p>与上一名差距：<?php if($article['diff'] < 0) { echo 0; }else{ echo $article['diff'];}  ?>票</p>
 		<div class="blank10"></div>
 		<p>拉票宣言：<?php echo $article['declaration'] ?></p>
 		<div class="blank10"></div>
