@@ -38,15 +38,19 @@ $signPackage = $jssdk->GetSignPackage();
     signature: '<?php echo $signPackage["signature"];?>',
     jsApiList: [
        // 所有要调用的 API 都要加到这个列表中
-       'checkJsApi',  //判断当前客户端版本是否支持指定JS接口
+       /* 'checkJsApi',  //判断当前客户端版本是否支持指定JS接口
        'onMenuShareTimeline', //分享给好友
        'onMenuShareAppMessage', //分享到朋友圈
        'onMenuShareQQ',  //分享到QQ
-       'onMenuShareWeibo' //分享到微博
+       'onMenuShareWeibo' //分享到微博 */
+       // 所有要调用的 API 都要加到这个列表中
+       'checkJsApi',
+       'openLocation',
+       'getLocation'
     ]
   });
   wx.ready(function () {
-      // 在这里调用 API
+      /* // 在这里调用 API
 	  wx.onMenuShareTimeline({  //例如分享给好友的API  
           title: '小画家比赛', // 分享标题
           desc: '快来给我投上一票吧', // 分享描述
@@ -71,7 +75,33 @@ $signPackage = $jssdk->GetSignPackage();
            cancel: function () {
                // 用户取消分享后执行的回调函数
            }
-        });
+        }); */
+	  wx.checkJsApi({
+		    jsApiList: [
+		        'getLocation'
+		    ],
+		    success: function (res) {
+		        // alert(JSON.stringify(res));
+		        // alert(JSON.stringify(res.checkResult.getLocation));
+		        if (res.checkResult.getLocation == false) {
+		            alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+		            return;
+		        }
+		    }
+		});
+
+	  wx.getLocation({
+		    success: function (res) {
+		        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+		        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+		        var speed = res.speed; // 速度，以米/每秒计
+		        var accuracy = res.accuracy; // 位置精度
+		        alert(latitude+", "+longitude+", "+speed+", "+accuracy);
+		    },
+		    cancel: function (res) {
+		        alert('用户拒绝授权获取地理位置');
+		    }
+		});
   });
 </script>
 </html>

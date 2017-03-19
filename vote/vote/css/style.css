@@ -28,3 +28,28 @@ body, button, input, select, textarea {font-size: 14px;font-family: Microsoft Ya
     font-size: 30px;
 }
 
+#user_center .header{
+	background: url(../images/user_center.jpg);
+    background-size: cover;
+    position: relative;
+    padding-bottom: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+#user_center .header .header-info{
+	text-align: right;
+    line-height: 17px;
+    display: inline-block;
+    float: left;
+    font-size: 1.2rem;
+    line-height: 75px;
+    width: 30%;
+}
+
