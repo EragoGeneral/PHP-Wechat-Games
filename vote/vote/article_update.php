@@ -6,12 +6,12 @@
     
     mysqli_select_db($conn, 'drawing_vote');
     
-    $sql = "update article set is_pass = $status where id = $article_id";
+    $sql = "update article set is_passed = $status, pass_time = SYSDATE() where id = $article_id";
     
     mysqli_query($conn, $sql);
     
     $flag = false;
-    if(mysql_affected_rows()){
+    if(mysqli_affected_rows($conn)){
         $flag = true;   
     }
     

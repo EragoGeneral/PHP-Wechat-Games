@@ -86,7 +86,7 @@ body {
 	    <div class="abtn_box">
     		<a href="javascript:agree();" class="a_btn toupiao vote" id="vote">通过</a> 
     		<a href="javascript:reject();" class="a_btn canjia">不通过</a> 
-    		<a href="" class="a_btn canjia">返回</a>
+    		<a href="approve.php" class="a_btn canjia">返回</a>
     	</div>
     <?php 
 	   }
@@ -143,6 +143,7 @@ body {
         	    	var flag = data.flag;
         	    	if(flag == 1){
             	    	alert('approved');
+            	    	window.location.href= 'approve.php';
             	    }
         	    }
         	}); 
@@ -160,6 +161,7 @@ body {
         	    	var flag = data.flag;
         	    	if(flag == 1){
             	    	alert('reject');
+            	    	window.location.href= 'approve.php';
             	    }
         	    }
         	}); 

@@ -66,8 +66,8 @@ body {
                 		  <span style="display: inline-block; width: 40%"><?php echo $row['name']?></span>
                 		  <span style="width: 40%; color: #f67685">
                 		      <a href="article_detail.php?id=<?php echo $row['id']?>&isApproved=1">查看</a>&nbsp;
-                		      <a>通过</a>&nbsp;
-                		      <a>不通过</a>
+                		      <a href="javascript:agree(<?php echo $row['id']?>);">通过</a>&nbsp;
+                		      <a href="javascript:reject(<?php echo $row['id']?>);">不通过</a>
                 		  </span>
                 		</li>  
             <?php 
@@ -85,4 +85,43 @@ mysqli_close($conn);
 <?php
 include 'footer.php';
 ?>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+function agree(articleId){
+	//var articleId= $('#artile_id').val();
+	$.ajax({
+	    url:'article_update.php',
+	    type:'post',
+	    dataType:'json',
+	    data:{"id":articleId, "status":"1"},
+	    async:false,
+	    success:function(data){
+	    	var flag = data.flag;
+	    	if(flag == 1){
+    	    	alert('approved');
+    	    	window.location.href= 'approve.php';
+    	    }
+	    }
+	}); 
+}
+
+function reject(articleId){
+	//var articleId= $('#artile_id').val();
+	$.ajax({
+	    url:'article_update.php',
+	    type:'post',
+	    dataType:'json',
+	    data:{"id":articleId, "status":"2"},
+	    async:false,
+	    success:function(data){
+	    	var flag = data.flag;
+	    	if(flag == 1){
+    	    	alert('reject');
+    	    	window.location.href= 'approve.php';
+    	    }
+	    }
+	}); 
+}
+</script>
+
 </html>
