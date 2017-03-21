@@ -9,8 +9,8 @@
 
 <body>
 	<div>
-		<img src="images/others/sun.jpg" /> <input id="btnShare" type="button"
-			value="Share" />
+		<img src="http://wxsxz117.cc:8080/games/games/zhaowifi/logo.jpg" width="0" height="0"/>
+		<input id="btnShare" type="button" value="Share" />
 	</div>
 	<?php
         include "jssdk/jssdk.php"; // 表示主机根目录下jssdk文件夹内jssdk.php文件

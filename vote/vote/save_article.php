@@ -25,7 +25,7 @@ mysqli_query($conn, $usql);
 
 mysqli_close($conn);
 
-echo '<div style="padding-top:50px;text-align:center;font-size:16px;"><a href="article_detail.php?id='.$article_id.'">作品发布成功,赶快去拉票吧</a></div>';
+echo '<div style="padding-top:50px;text-align:center;font-size:16px;"><a href="article_detail.php?id='.$article_id.'">作品发布成功,请耐心等待管理员审批</a></div>';
 ?>
 
 <!DOCTYPE html>

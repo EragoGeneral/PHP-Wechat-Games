@@ -24,6 +24,7 @@ $total = mysqli_num_rows($result);
 $loadtimes = $total/10;
 
 $loadIndex = $_POST['load_index'];
+$loadLatest = $_POST['load_latest'];
 
 // $age = $_POST['age'];
 // $job = $_POST['job'];
@@ -43,7 +44,11 @@ if($loadIndex>$loadtimes){
     $loadIndex = $loadIndex*10;
     
     mysqli_query($conn, "set names 'utf8'");
-    $sql = "SELECT a.id, a.code, a.name, a.path FROM article a WHERE is_deleted = '0' and is_passed = '1' LIMIT $loadIndex, 10";
+    if($loadLatest == 1){
+        $sql = "SELECT a.id, a.code, a.name, a.path FROM article a WHERE is_deleted = '0' and is_passed = '1' order by updated_time desc LIMIT 0, 16";
+    }else{
+        $sql = "SELECT a.id, a.code, a.name, a.path FROM article a WHERE is_deleted = '0' and is_passed = '1' LIMIT $loadIndex, 10";
+    }
     $result = mysqli_query($conn, $sql);
     
     if($num = mysqli_num_rows($result)){
@@ -72,14 +77,21 @@ if($loadIndex>$loadtimes){
 //         );
 //         array_push($json_array, $json_arr);
 //     } 
-    $flag = '1';
-    $msg = '';
+    if($loadLatest == 1){
+        $flag = '0';
+        $msg = '图片已全部显示';
+    }else{
+        $flag = '1';
+        $msg = '';
+    }
+    
+    
 }
 mysqli_close($conn);
 
 //echo $json_array;
 
 //$json_obj = json_encode(array('list'=>$json_array));
-$json_obj = json_encode(array('list'=>$json_array,'flag'=>$flag,'msg'=>$msg));
+$json_obj = json_encode(array('list'=>$json_array,'flag'=>$flag,'msg'=>$msg,'loadLatest' => $loadLatest));
 echo $json_obj;
 ?>

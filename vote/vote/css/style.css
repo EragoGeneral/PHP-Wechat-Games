@@ -1,5 +1,41 @@
 body, button, input, select, textarea {font-size: 14px;font-family: Microsoft YaHei,arial,\5b8b\4f53; }
 
+html {
+    font-size: 62.5%;
+}
+
+html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, section, article, aside, header, footer, nav, dialog, figure, hgroup, em, button, a, input {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    font-size: 1.4rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.clearfix {
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
 .item {
 	width: 45%;
 	margin: 2%;
@@ -37,12 +73,6 @@ body, button, input, select, textarea {font-size: 14px;font-family: Microsoft Ya
     text-align: center;
 }
 
-.clearfix:before, .clearfix:after {
-    display: table;
-    content: "";
-    line-height: 0;
-}
-
 #user_center .header .header-info{
 	text-align: right;
     line-height: 17px;
@@ -53,3 +83,41 @@ body, button, input, select, textarea {font-size: 14px;font-family: Microsoft Ya
     width: 30%;
 }
 
+#user_center .header .header-info span.icon{
+	width: 25px;
+    height: 25px;
+    background: rgba(255,255,255,0.3);
+    font-size: 22px;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 100;
+    line-height: 25px;
+    position: absolute;
+    left: 20px;
+}
+
+#user_center .header .header-info span.icon i{
+	display: inline-block;
+    /*background-image: url(../images/jiantou.png);*/
+    background-size: 15px;
+    width: 15px;
+    height: 15px;
+	position: relative;
+}
+
+
+menu ul{width:100%;background:#fff;border-bottom:1px solid #d9d9d9}
+menu ul li{width:48.5%;float:left;font-size:1.2rem;color:#1a1a1a;border-left:1px solid #d9d9d9;padding:5px 0;text-align:center;}
+menu ul li h2{line-height:1.8rem;font-weight:normal;font-size:1.2rem;}
+menu ul li.active h2{color:#ce1b05;}
+menu ul li p{font-size:1.0rem;color:#5a5a5a;line-height:18px;}
+
+menu ul li.active h2 {
+    color: #ce1b05;
+}
+
+menu ul li h2 {
+    line-height: 1.8rem;
+    font-weight: normal;
+    font-size: 1.2rem;
+}

@@ -42,6 +42,11 @@ body {
 ?>
 <?php
     include 'tabs.php';
+    
+    $loadLatest = 0;
+    if(isset($_GET['load_latest'])){
+        $loadLatest = 1;
+    }
 ?>
 <div id="container"></div>
 <script src="js/jquery-1.7.2.min.js"></script>
@@ -59,6 +64,7 @@ var waterFall = {
 	
 	loadFinish: false,
 	loadIndex:0,
+	loadLatest:<?php echo $loadLatest;?>,
 	// 返回固定格式的图片名
 	getIndex: function() {
 		var index = this.indexImage;
@@ -95,14 +101,13 @@ var waterFall = {
 		    url:'pagedata_json.php',
 		    type:'post',
 		    dataType:'json',
-		    data:{"load_index":that.loadIndex},
+		    data:{"load_index":that.loadIndex, "load_latest":that.loadLatest},
 		    async:false,
 		    success:function(data){
 		    	console.log(data);
 		    	var flag = data.flag;
 				if(flag == '0'){
 					that.loadFinish = true;
-					alert(data.msg);
 				}
 				
 			    var rets = data.list;
@@ -110,6 +115,7 @@ var waterFall = {
 			    	var index = rets[idx].index;
 			    	var imgUrl = rets[idx].path;
 					var link = rets[idx].detail;
+					var name = rets[idx].name;
 			    	var column;
 			    	var column0 = document.getElementById("waterFallColumn_0");
 			    	var column1 = document.getElementById("waterFallColumn_1");
@@ -127,7 +133,7 @@ var waterFall = {
 					var aEle = document.createElement("a");
 					aEle.href = link;
 					aEle.className = "pic_a";
-					aEle.innerHTML = '<img src="'+ imgUrl +'" /><strong>'+ index +'</strong>';
+					aEle.innerHTML = '<img src="'+ imgUrl +'" /><strong>'+ name +'</strong>';
 					column.appendChild(aEle);
 			    }
 			    that.loadIndex++;
@@ -177,14 +183,17 @@ var waterFall = {
 		    url:'pagedata_json.php',
 		    type:'post',
 		    dataType:'json',
-		    data:{"load_index":that.loadIndex},
+		    data:{"load_index":that.loadIndex, "load_latest":that.loadLatest},
 		    async:false,
 		    success:function(data){		
 		    	console.log(data);
 				var flag = data.flag;
+				if(flag == '0'){
+					that.loadFinish = true;
+				}
 		    	var rets = data.list;	    
 		    	 for(var idx = 0; idx < rets.length; idx++){
-			    	var obj = {"index":rets[idx].index, "imgUrl":rets[idx].path, "link":rets[idx].detail};
+			    	var obj = {"index":rets[idx].index, "imgUrl":rets[idx].path, "link":rets[idx].detail, "name":rets[idx].name};
 			    	result.push(obj);
 		    	 }  
 		    	 that.loadIndex++; 	
@@ -201,7 +210,7 @@ var waterFall = {
 // 						var index = self.getIndex();
 // 						html = html + '<i class="number">'+index+'号</i><a href="###" class="pic_a"><img src="'+ self.rootImage + "P_" + index +'.jpg" /><strong>'+ index +'</strong></a>';
 						var obj = result[start + self.columnNumber * i];
-						html = html + '<i class="number">'+obj.index+'号</i><a href="'+ obj.link +'" class="pic_a"><img src="'+ obj.imgUrl +'" /><strong>'+ obj.index +'</strong></a>';
+						html = html + '<i class="number">'+obj.index+'号</i><a href="'+ obj.link +'" class="pic_a"><img src="'+ obj.imgUrl +'" /><strong>'+ obj.name +'</strong></a>';
 					}
 					return html;	
 				}() +
@@ -311,8 +320,14 @@ var waterFall = {
 	}
 };
 waterFall.init();
+
+    var tabType = '<?php echo $loadLatest;?>';
+    if(tabType==1){
+    	$('#latest_tab').siblings().removeClass('active');
+    	$('#latest_tab').addClass('active');
+    }
+
 </script>
-<div style=" height:60px; width:100%; display:block;"></div>
 <?php
     include 'footer.php';
 ?>

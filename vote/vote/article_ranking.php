@@ -71,22 +71,6 @@ body {
                     }
                 }
             ?>
-		<!--  
-		<li class="list">
-		  <span>1</span><span>150</span>
-		  <span style="display: inline-block; width: 40%">梦幻美少女</span>
-		  <span style="width: 18%; color: #f67685">6947</span>
-		</li>
-		<li class="list">
-		  <span>2</span><span>92</span>
-		  <span style="display: inline-block; width: 40%">充满幻想的世界</span>
-		  <span style="width: 18%; color: #f67685">5595</span></li>
-		<li class="list">
-		  <span>3</span><span>107</span>
-		  <span style="display: inline-block; width: 40%">冬、夏</span>
-		  <span style="width: 18%; color: #f67685">5365</span>
-		</li>
-		 -->
 	</ul>
 </div>
 
@@ -94,18 +78,6 @@ body {
 echo CommonUtil::getValue('article_ranking.php', $count, $curPage, $per);
 mysqli_close($conn);
 ?>
-<!-- 
-<div class="pagination pagination-centered" style="margin-top: 20px;">
-	<span class="current">1</span><a
-		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=2">2</a><a
-		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=3">3</a><a
-		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=4">4</a><a
-		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=5">5</a>
-	<a
-		href="/index.php?g=Wap&amp;m=Voteimg&amp;a=vote_ranking&amp;id=7&amp;token=rowbhj1484111879&amp;mk=d542b3e8fb172a397d1d2da7e9decd21&amp;p=2">&gt;&gt;</a>
-</div>
--->
-<div style="height: 60px; width: 100%; display: block;"></div>
 <?php
 include 'footer.php';
 ?>
