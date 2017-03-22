@@ -34,6 +34,7 @@ body {
 }
 </style>
 <link href="css/waterfall.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-1.7.2.min.js"></script>
 </head>
 
 <body>
@@ -57,7 +58,6 @@ body {
     
 ?>
 <div id="container"></div>
-<script src="js/jquery-1.7.2.min.js"></script>
 <script>
 var waterFall = {
 	container: document.getElementById("container"),
@@ -335,17 +335,23 @@ waterFall.init();
     	$('#latest_tab').addClass('active');
     }
 
-    //var articleId= $('#artile_id').val();
-	$.ajax({
-	    url:'article_update.php',
-	    type:'post',
-	    dataType:'json',
-	    data:{"id":articleId, "status":"2"},
-	    async:false,
-	    success:function(data){
-	    	
-	    }
-	}); 
+	$(document).ready(function(){
+		console.log('finish load document');
+		
+		$.ajax({
+		    url:'statistics.php',
+		    type:'post',
+		    dataType:'json',
+		    data:{"visitor":"1"},
+		    async:false,
+		    success:function(data){
+			    console.log(data.test);
+		    	$('#main_a').text(data.article_count);
+				$('#main_b').text(data.attender_count);
+				$('#main_c').text(data.visitor_count);
+		    }
+		}); 
+	});
 </script>
 <?php
     include 'footer.php';

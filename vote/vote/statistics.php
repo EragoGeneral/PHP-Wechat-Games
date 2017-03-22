@@ -2,7 +2,7 @@
     include 'dbconn.php';
     include 'commonutil.class.php';
     
-    if(isset($_GET['visitor'])){
+    if(isset($_POST['visitor'])){
         $calVisitor = '1';
     }else{
         $calVisitor = '0';
@@ -12,8 +12,10 @@
     mysqli_select_db($conn, "drawing_vote");
     
     if($calVisitor == '1'){
-       $opIP = CommonUtil::getIP(); 
+       $util = new CommonUtil();
+       $opIP = $util->getIP(); 
        $addsql = "insert into operation_log(op_type, op_IP, op_time, is_deleted) values('visit', '$opIP', SYSDATE(), '0')";
+       mysqli_query($conn, $addsql);
     }
     
     //统计参加作品数

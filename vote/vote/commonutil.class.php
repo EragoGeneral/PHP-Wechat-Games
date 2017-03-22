@@ -46,7 +46,7 @@ class CommonUtil
       return $str;
   }
   
-  public static function getIP()
+  public function getIP()
   {
       static $realip;
       if (isset($_SERVER)){
