@@ -8,7 +8,7 @@ $declaration = $_POST['declaration'];
 $file = $_SESSION['1123_article_path'];
 
 if(empty($article_name) || empty($declaration)){
-    echo '请填写用户名和宣言!<a href="upload_article.html">返回/a>';
+    echo '请填写作品名称和宣言!<a href="upload_article.html">返回/a>';
     exit;
 }
 

@@ -15,7 +15,8 @@
 			</a>
 		</li>	
 		<li class="ico_4" id="foot_bu" style="width: 33%;">
-		    <a href="javascript:;" onclick="window.location.href = &quot;user_center1.html&quot;">
+		    <input type="hidden" id="sessionUserId" value="<?php echo $sessionUserId?>" />
+		    <a onclick="javascript:gotoDash();">
 			<span class="ico">
 				<img src="images/daohang_04.png" width="20" height="20">
 			</span>
@@ -23,3 +24,13 @@
 		</li>  
 	</ul>
 </div>
+<script>
+	function gotoDash(){
+		var sessionUserId = $('#sessionUserId').val();
+		if(sessionUserId != 0){
+			window.location.href = "user_center1.html";
+		}else{
+			window.location.href = "login.php";
+		}
+	}
+</script>

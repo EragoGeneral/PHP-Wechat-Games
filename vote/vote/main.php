@@ -47,6 +47,14 @@ body {
     if(isset($_GET['load_latest'])){
         $loadLatest = 1;
     }
+    
+    session_start();
+    if(isset($_SESSION['user_id'])){
+        $sessionUserId = $_SESSION['user_id'];
+    }else{
+        $sessionUserId = 0;
+    }
+    
 ?>
 <div id="container"></div>
 <script src="js/jquery-1.7.2.min.js"></script>
@@ -327,6 +335,17 @@ waterFall.init();
     	$('#latest_tab').addClass('active');
     }
 
+    //var articleId= $('#artile_id').val();
+	$.ajax({
+	    url:'article_update.php',
+	    type:'post',
+	    dataType:'json',
+	    data:{"id":articleId, "status":"2"},
+	    async:false,
+	    success:function(data){
+	    	
+	    }
+	}); 
 </script>
 <?php
     include 'footer.php';

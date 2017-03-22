@@ -9,7 +9,7 @@ $password = 'root';
 $conn = mysqli_connect($host, $user_name, $password);
 
 if(!$conn){
-    die('数据库连接失败: '.mysql_error());
+    die('数据库连接失败: '.mysqli_error());
 }
 
 //echo "数据库连接成功!";
