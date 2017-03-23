@@ -1,5 +1,7 @@
 <?php
 
+include 'commonutil.class.php';
+
 // 允许上传的图片后缀
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["weixin_image"]["name"]);
@@ -20,24 +22,27 @@ if ((($_FILES["weixin_image"]["type"] == "image/gif")
 	}
 	else
 	{
+	    $util = new CommonUtil();
+        $filename = $util->createGuid();
 		
 		// 判断当期目录下的 upload 目录是否存在该文件
 		// 如果没有 upload 目录，你需要创建它，upload 目录权限为 777
-		if (file_exists("upload/" . $_FILES["weixin_image"]["name"]))
+		if (file_exists("upload/" . $filename.'.'.$extension))
 		{
 			echo $_FILES["weixin_image"]["name"] . " 文件已经存在。 ";
 		}
 		else
 		{
 			// 如果 upload 目录不存在该文件则将文件上传到 upload 目录下
-			move_uploaded_file($_FILES["weixin_image"]["tmp_name"], "upload/" . $_FILES["weixin_image"]["name"]);
+			move_uploaded_file($_FILES["weixin_image"]["tmp_name"], "upload/" . $filename.'.'.$extension);
 			//echo "文件存储在: " . "upload/" . $_FILES["weixin_image"]["name"];
 		}
-		$imgUrl = "upload/" . $_FILES["weixin_image"]["name"];
+		$imgUrl = "upload/" . $filename.'.'.$extension;
 		//将文件路径保存在session中
 		session_start();
-		$_SESSION['1123_article_path'] = $imgUrl;
-		$json_obj = json_encode(array('id'=>'123','imgUrl'=>$imgUrl));
+		$sessionUserId = $_SESSION['user_id'];
+		$_SESSION[$sessionUserId.'_article_path'] = $imgUrl;
+		$json_obj = json_encode(array('id'=>$sessionUserId,'imgUrl'=>$imgUrl));
 		echo $json_obj;
 	}
 }

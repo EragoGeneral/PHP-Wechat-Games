@@ -29,7 +29,7 @@
 		  </script>
 	</div>
 	<div class="bigBtn"> 
-		<a href="upload_article.html" onclick="">我要报名</a> 
+		<a href="javascript:uploadPic();" onclick="">我要报名</a> 
 	</div>    
 
 	<div class="search">
@@ -70,8 +70,10 @@
     session_start();
     if(isset($_SESSION['user_id'])){
         $sessionUserId = $_SESSION['user_id'];
+        $sessionUserName = $_SESSION['login_name'];
     }else{
         $sessionUserId = 0;
+        $sessionUserName = '';
     }
 ?>
 <script>
@@ -89,4 +91,14 @@
     	    }
     	}); 
     });
+
+    function uploadPic(){
+		var sessionId = '<?php echo $sessionUserId?>';
+		console.log(sessionId);
+		if(sessionId != 0){
+			window.location.href = 'upload_article.html';
+		}else{
+			window.location.href = 'login.php';
+		}	
+    }
 </script>

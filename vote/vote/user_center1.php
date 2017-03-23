@@ -5,8 +5,19 @@
 <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
 <title>个人中心</title>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-1.7.2.min.js"></script>
 </head>
 <body style="margin: 0px;">
+    <?php 
+        session_start();
+        if(isset($_SESSION['user_id'])){
+            $sessionUserId = $_SESSION['user_id'];
+            $sessionUserName = $_SESSION['login_name'];
+        }else{
+            $sessionUserId = 0;
+            $sessionUserName = '';
+        }
+    ?>
 	<div id="user_center">
 		<div class="header">
 			<div class="clearfix" style="width: 100%;padding-top: 20px;">
@@ -25,7 +36,7 @@
 				<h1 class="name" style="font-size: 0.67rem;line-height: 26px;font-weight: normal;">匿名</h1>
 			</div>
 			<div class="operation">
-				<button class="baoming" style="margin-top:20px;background: #ffe900;width: 100px;line-height: 20px;border-radius: 20px;font-size: 0.67rem;color: #000;border: none;" onclick="apply();">我要报名</button>
+				<button class="baoming" style="margin-top:20px;background: #DAA08C; color:#fff; width: 100px;line-height: 20px;border-radius: 20px;font-size: 0.67rem;color: #000;border: none;" onclick="apply();">我要报名</button>
 			</div>
 		</div>
 		<menu>
@@ -57,6 +68,24 @@
 		    </ul>
 		</article>
 	</div>
-	
+	<?php 
+	   if($sessionUserName == 'admin'){
+	?>
+    	<div style="position: absolute; bottom: 10px; right: 10px;">
+    	   <span onclick="javascript:window.location.href='approve.php';" style="display: inline-block; background: #DAA08C; color:#fff; height: 36px; width: 90px; text-align: center; line-height: 36px; padding: 0px 20px; border-radius: 24px; letter-spacing: 5px;">
+                    去审批&gt;&gt;
+           </span>
+    	</div>
+	<?php 
+	   }
+	?>
+	<script>
+		$(document).ready(function(){
+			$('#c_foot li').bind('click',function(){
+				$('#c_foot li').removeClass('active');
+				$(this).addClass('active');
+			});
+		});
+	</script>
 </body>
 </html>

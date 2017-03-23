@@ -46,6 +46,7 @@
     $start = ($curPage-1)*$per;
     $pageSql = "SELECT id, code, name, vote_num from article WHERE is_deleted = '0' and is_passed = '1' order by vote_num desc limit $start, $per";
     $pageResult = mysqli_query($conn, $pageSql);
+    
 ?>
 <div class="blank20"></div>
 

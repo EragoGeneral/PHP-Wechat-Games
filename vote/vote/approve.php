@@ -13,7 +13,7 @@ body {
 </style>
 	<title>待审核作品</title>
 	<link href="css/waterfall.css" type="text/css" rel="stylesheet" />
-
+    <script src="js/jquery-1.7.2.min.js"></script>
 </head>
 <?php
     include 'header.php';

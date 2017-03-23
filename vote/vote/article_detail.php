@@ -36,7 +36,7 @@ body {
         
         //$sql = "select id, code, name, path, author, vote_num, declaration from article where id = $article_id";
         
-        $sql = "SELECT t2.rownum, t2.id, t2.code, t2.name, t2.path, t2.author, t2.declaration, IFNULL(t2.vote_num,0) as vote_num , IFNULL((t11.vote_num-t2.vote_num),0) as diff FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, path, author, vote_num, declaration FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' ORDER BY vote_num DESC) t)t2 LEFT JOIN (SELECT t1.rownum, t1.vote_num FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, vote_num FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' ORDER BY vote_num DESC) t) t1)t11 ON t2.rownum - 1= t11.rownum WHERE id = $article_id";
+        $sql = "SELECT t2.rownum, t2.id, t2.code, t2.name, t2.path, t2.author, t2.declaration, t2.is_passed, IFNULL(t2.vote_num,0) as vote_num , IFNULL((t11.vote_num-t2.vote_num),0) as diff FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, path, author, vote_num, declaration, is_passed FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' ORDER BY vote_num DESC) t)t2 LEFT JOIN (SELECT t1.rownum, t1.vote_num FROM (SELECT @rownum:=@rownum+1 rownum, id, CODE, NAME, vote_num FROM (SELECT @rownum:=0,article.* FROM article WHERE is_deleted = '0' ORDER BY vote_num DESC) t) t1)t11 ON t2.rownum - 1= t11.rownum WHERE id = $article_id";
         
         $result = mysqli_query($conn, $sql);
         $article = mysqli_fetch_array($result);
@@ -74,14 +74,14 @@ body {
 	</div>
 	<div class="blank10"></div>
 	<?php 
-	   if($is_approved == '0'){
+	   if($is_approved == '0' && $article['is_passed'] == '1'){
 	?>
     	<div class="abtn_box">
     		<a href="javascript:vote();" class="a_btn toupiao vote" id="vote">我要投票</a> 
     		<a href="javascript:addTicket();" class="a_btn canjia">给TA拉票</a> 
     	</div>
 	<?php 
-	   }else{
+	   }else if($is_approved == '1'){
 	?>
 	    <div class="abtn_box">
     		<a href="javascript:agree();" class="a_btn toupiao vote" id="vote">通过</a> 
@@ -128,7 +128,9 @@ body {
 
        	function addTicket(){
            	document.title = '我在萌宝绘画参加比赛，<?php echo $article['code'] ?>号作品，快来给我投上宝贵的一票吧';
-			document.getElementById("share").style.display="";
+           	$('#image-bg').css('height', (document.body.scrollTop+window.innerHeight)+'px');
+			$('#share').show();
+			$('#image-bg').show();
         }
 
         function agree(){
@@ -171,15 +173,22 @@ body {
             console.log($('#article_img').attr('src'));
 			$('#share_pic').attr('src', 'images/others/33.jpg');
 			document.title = '我在萌宝绘画参加比赛，<?php echo $article['code'] ?>号作品，快来给我投上宝贵的一票吧';
+
+			$('#image-bg').bind('click', function(){
+				$('#share').hide();
+				$('#image-bg').hide();
+			});
         });
     </script>  
     <?php
         include 'footer.php';
     ?>  
-    <div id="share" style="display: none; background: black; filter": "Alpha(opacity=90)">
+    <div id="share" style="display: none; background: black; filter": "Alpha(opacity=90); z-index:1000;">
 			<img width="100%" src="images/share_tips.png"
-			style="position: fixed; z-index: 9999; top: 0; left: 0; display:''; height: 100%;"
+			style="position: fixed; z-index: 999; top: 0; left: 0; display:''; height: 100%;"
 			ontouchstart="document.getElementById('share').style.display='none';" />
+	</div>
+	<div id="image-bg" style="display:none; width: 100%; height: 100%; z-index: 999; background-color: #000; opacity: 0.6; position: absolute; top: 0px; left: 0px;">
 	</div>
     </body>
 </html>
