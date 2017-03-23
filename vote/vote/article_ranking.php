@@ -5,15 +5,15 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style type="text/css">
-body {
-	position: relative;
-	margin: 0;
-	padding: 10px 0 0 0;
-}
-</style>
+        body {
+        	position: relative;
+        	margin: 0;
+        	padding: 10px 0 0 0;
+        }
+    </style>
 	<title>投票排名</title>
 	<link href="css/waterfall.css" type="text/css" rel="stylesheet" />
-
+    <script src="js/jquery-1.7.2.min.js"></script> 
 </head>
 <?php
     include 'header.php';
@@ -63,7 +63,9 @@ body {
             ?>
                         <li class="list">
                 		  <span><?php echo $num ?></span><span><?php echo $row['code']?></span>
-                		  <span style="display: inline-block; width: 40%"><?php echo $row['name']?></span>
+                		  <span style="display: inline-block; width: 40%">
+                		      <a href="article_detail.php?id=<?php echo $row['id']?>"><?php echo $row['name']?></a>
+                		  </span>
                 		  <span style="width: 18%; color: #f67685"><?php echo $row['vote_num']?></span>
                 		</li>  
             <?php 

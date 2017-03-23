@@ -48,14 +48,6 @@ body {
     if(isset($_GET['load_latest'])){
         $loadLatest = 1;
     }
-    
-    session_start();
-    if(isset($_SESSION['user_id'])){
-        $sessionUserId = $_SESSION['user_id'];
-    }else{
-        $sessionUserId = 0;
-    }
-    
 ?>
 <div id="container"></div>
 <script>
@@ -334,24 +326,6 @@ waterFall.init();
     	$('#latest_tab').siblings().removeClass('active');
     	$('#latest_tab').addClass('active');
     }
-
-	$(document).ready(function(){
-		console.log('finish load document');
-		
-		$.ajax({
-		    url:'statistics.php',
-		    type:'post',
-		    dataType:'json',
-		    data:{"visitor":"1"},
-		    async:false,
-		    success:function(data){
-			    console.log(data.test);
-		    	$('#main_a').text(data.article_count);
-				$('#main_b').text(data.attender_count);
-				$('#main_c').text(data.visitor_count);
-		    }
-		}); 
-	});
 </script>
 <?php
     include 'footer.php';

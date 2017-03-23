@@ -13,7 +13,7 @@ body {
 </style>
 	<title>作品详情</title>
 	<link href="css/waterfall.css" type="text/css" rel="stylesheet" />
-
+    <script src="js/jquery-1.7.2.min.js"></script> 
 </head>
 <body>
     <img id="share_pic" src="images/others/33.jpg" width="0" height="0"/>
@@ -92,7 +92,6 @@ body {
 	   }
     ?>	
 	</section>
-    <script src="js/jquery-1.7.2.min.js"></script>    
     <script>
     	function vote(){
         	var articleId= $('#artile_id').val();
@@ -120,8 +119,9 @@ body {
 							window.location.reload();
 						}else{
 							$('#diff').text(gap);        	    		
-						}
+						}						
             	    }
+            	    alert(data.info);                	
         	    }
         	});  
        	}

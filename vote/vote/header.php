@@ -33,24 +33,60 @@
 	</div>    
 
 	<div class="search">
-      <form action="/index.php?g=Wap&amp;m=Voteimg&amp;a=index&amp;id=7&amp;token=rowbhj1484111879" id="search_form" method="post">
-	  <input type="hidden" name="id" value="7">
-	  <input type="hidden" name="token" value="rowbhj1484111879">
+      <form action="article_search.php" id="search_form" method="post">
         <div class="search_con">
           <div class="btn">
             <input type="submit" name="seachid" id="searchBtn" value="搜索">
           </div>
           <div class="text_box">
-            <input type="search" id="searchText" value="" name="key_word" placeholder="请输入选项标题或编号" autocomplete="off">
+            <input type="text" id="searchText" value="" name="key_word" placeholder="请输入选项标题或编号" autocomplete="off">
           </div>
         </div>
-      <input type="hidden" name="__hash__" value="069ffdd99a05bbeab696412e46f812df_178ec19e0791594d25d383eacce79bfa"></form>
+      </form>
     </div>
 	<div class="num_box">
       <ul class="num_box_ul">
-        <li> <span class="text">统计参与者</span> <span id="main_a">262</span> </li>
-        <li> <span class="text">统计投票数</span> <span id="main_b">49259</span> </li>
-        <li> <span class="text">统计访问量</span> <span id="main_c">45542</span> </li>
+        <li> <span class="text">统计参与者</span> <span id="main_a">0</span> </li>
+        <li> <span class="text">统计投票数</span> <span id="main_b">0</span> </li>
+        <li> <span class="text">统计访问量</span> <span id="main_c">0</span> </li>
       </ul>
     </div>  
+    <div id="popup_search" class="search" style="display:none; position: absolute; top: 63px; left: 0px; z-index: 1000; width: 100%; padding-left: 10px; padding-right: 10px;">
+	 <form action="article_search.php" method="post" style="width: 97%;">
+        <div class="search_con">
+          <div class="btn">
+            <input type="submit" name="seachid" id="searchBtn" value="搜索">
+          </div>
+          <div class="text_box">
+            <input id="pop_search_text" type="text" value="" name="key_word" placeholder="请输入选项标题或编号" autocomplete="off">
+          </div>
+        </div>
+      </form>
+	</div>
+	<div id="cover" style="display:none; width: 100%; height: 100%; z-index: 999; background-color: #000; opacity: 0.6; position: absolute; top: 0px; left: 0px;">
+	</div>
 </div>
+<?php 
+    session_start();
+    if(isset($_SESSION['user_id'])){
+        $sessionUserId = $_SESSION['user_id'];
+    }else{
+        $sessionUserId = 0;
+    }
+?>
+<script>
+    $(document).ready(function(){
+    	$.ajax({
+    	    url:'statistics.php',
+    	    type:'post',
+    	    dataType:'json',
+    	    data:{"visitor":"1"},
+    	    async:false,
+    	    success:function(data){
+    	    	$('#main_a').text(data.article_count);
+    			$('#main_b').text(data.attender_count);
+    			$('#main_c').text(data.visitor_count);
+    	    }
+    	}); 
+    });
+</script>
