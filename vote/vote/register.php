@@ -9,6 +9,10 @@
     	background-image: url(images/icons.png);
     	background-position: 10px 20px;
     }
+    
+    .text-user{margin: 0px auto; border: solid 2px #ccc; width: 80%; height: 30px; background:url(images/user.png) no-repeat 0 center;}
+    .text-pwd{margin: 0px auto; border: solid 2px #ccc; width: 80%; height: 30px; background:url(images/password.png) no-repeat 0 center;}
+    .text-user input, .text-pwd input{float:left;border:none;background:none;height:30px;line-height:30px;width:100%; text-indent:32px;}
 </style>
 <script src="js/jquery-1.7.2.min.js"></script>
 </head>
@@ -62,13 +66,15 @@
     </div>
     <form id="form1" name="form1" method="post" action="register.php">
         <div class="text-box" style="margin-top: 30px;">
-            <span style="display:inline-block; margin-bottom: 20px;">
-                <i></i>
-                <input type="text" name="username" id="username" style="border: none; height: 28px; border-bottom: solid 1px #eee;" />
+            <span style="display:inline-block; margin-bottom: 20px; width: 80%;">
+                <div class="text-user">
+                    <input type="text" name="username" id="username" />
+                </div>    
             </span>
-            <span style="display:inline-block;">
-                <i></i> 
-                <input type="password" name="password" id="password" style="border: none; height: 28px; border-bottom: solid 1px #eee;" />
+            <span style="display:inline-block; width: 80%;">
+                <div class="text-pwd">
+                    <input type="password" name="password" id="password" />
+                </div>
             </span>
         </div>    
         <div class="login-btn" style="margin-top: 35px; font-size: 20px; color: #fff;">
