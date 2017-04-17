@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//admin/dashtab.php=UTF-8
 encoding//admin/login.php=UTF-8
 encoding//admin/reward.php=UTF-8
+encoding//admin/reward_remove.php=UTF-8
 encoding//admin/reward_setting.php=UTF-8
 encoding//admin/rules.php=UTF-8
 encoding//jssdk/jsapi_ticket.json=UTF-8

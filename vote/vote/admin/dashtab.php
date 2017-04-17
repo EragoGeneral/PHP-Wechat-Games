@@ -48,11 +48,14 @@
             <div style="text-align: center; padding: 10px;">
                 <img src="../images/admin/rules.png" alt="" />
             </div>
-            <span class="name">设置规则</span>
+            <span class="name">投票说明</span>
         </div>
-        <div class="item">
-        
-        </div>    
+        <div class="item" onclick="javascript:window.location.href='../approve.php';">
+            <div style="text-align: center; padding: 10px;">
+                <img src="../images/admin/approve.png" alt="" />
+            </div>
+            <span class="name">审批作品</span>
+        </div>
     </div>
 </body>
 

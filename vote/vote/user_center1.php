@@ -33,10 +33,12 @@
 				<div class="header-info"></div>
 			</div>
 			<div style="width:100%;">
-				<h1 class="name" style="font-size: 0.67rem;line-height: 26px;font-weight: normal;">匿名</h1>
+				<h1 class="name" style="font-size: 0.67rem;line-height: 26px;font-weight: normal;">
+				    <?php echo $sessionUserName?>
+				</h1>
 			</div>
 			<div class="operation">
-				<button class="baoming" style="margin-top:20px;background: #DAA08C; color:#fff; width: 100px;line-height: 20px;border-radius: 20px;font-size: 0.67rem;color: #000;border: none;" onclick="apply();">我要报名</button>
+				<button class="baoming" style="margin-top:20px;background: #DAA08C; color:#fff; width: 100px;line-height: 20px;border-radius: 20px;font-size: 0.67rem;color: #000;border: none;" onclick="logout();">注销</button>
 			</div>
 		</div>
 		<menu>
@@ -72,8 +74,8 @@
 	   if($sessionUserName == 'admin'){
 	?>
     	<div style="position: absolute; bottom: 10px; right: 10px;">
-    	   <span onclick="javascript:window.location.href='approve.php';" style="display: inline-block; background: #DAA08C; color:#fff; height: 36px; width: 90px; text-align: center; line-height: 36px; padding: 0px 20px; border-radius: 24px; letter-spacing: 5px;">
-                    去审批&gt;&gt;
+    	   <span onclick="javascript:window.location.href='admin/dashtab.php';" style="display: inline-block; background: #DAA08C; color:#fff; height: 36px; width: 90px; text-align: center; line-height: 36px; padding: 0px 20px; border-radius: 24px; letter-spacing: 5px;">
+                    控制台&gt;&gt;
            </span>
     	</div>
 	<?php 
@@ -86,6 +88,23 @@
 				$(this).addClass('active');
 			});
 		});
+
+		function logout(){
+			var sessionUser = '<?php echo $sessionUserName?>';
+			$.ajax({
+			    url:'logout.php',
+			    type:'post',
+			    dataType:'json',
+			    data:{"sessionUser":sessionUser},
+			    async:false,
+			    success:function(data){
+			    	var flag = data.flag;
+			    	if(flag == 1){
+		    	    	window.location.href= 'main.php';
+		    	    }
+			    }
+			}); 
+		}
 	</script>
 </body>
 </html>
